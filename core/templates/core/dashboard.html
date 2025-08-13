@@ -1,0 +1,11 @@
+<h1>Welcome to Dashboard</h1>
+<p>Hello, {{ request.user.email }}</p>
+<div class="messages">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<a href="{% url 'logout' %}">Logout</a>

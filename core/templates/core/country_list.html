@@ -1,0 +1,10 @@
+<a href="{% url 'country_create' %}">Add Country</a>
+<ul>
+    {% for country in countries %}
+    <li>
+        {{ country.country_name }} - {{ country.country_currency }}
+        <a href="{% url 'country_update' country.id %}">Edit</a>
+        <a href="{% url 'country_delete' country.id %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
