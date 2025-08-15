@@ -1,5 +1,7 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,6 +20,8 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+RAJAONGKIR_API_KEY = os.getenv("RAJAONGKIR_API_KEY")
+RAJAONGKIR_BASE_URL = os.getenv("RAJAONGKIR_BASE_URL", "https://rajaongkir.komerce.id/api/v1")
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -31,7 +35,13 @@ INSTALLED_APPS = [
     'core',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
+]
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -131,12 +141,6 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
     ],
 }
-
-# RajaOngkir config
-RAJAONGKIR_BASE_URL = os.getenv("RAJAONGKIR_BASE_URL", "https://api.rajaongkir.com/starter")
-RAJAONGKIR_API_KEY = os.getenv("RAJAONGKIR_API_KEY", "")
-RAJAONGKIR_DEFAULT_ORIGIN = os.getenv("RAJAONGKIR_DEFAULT_ORIGIN", "")  # city_id asal domestik
-RAJAONGKIR_COURIER = os.getenv("RAJAONGKIR_COURIER", "jne")
 
 AUTHENTICATION_BACKENDS = [
     'core.backends.EmailBackend',  # custom email backend

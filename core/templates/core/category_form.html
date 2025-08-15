@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="container mt-5" style="max-width: 600px;">
+    <div class="card shadow-sm p-4">
+        <h2 class="mb-4 text-center">
+            {% if form.instance.pk %}Update{% else %}Create{% endif %} Category
+        </h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-flex justify-content-between mt-3">
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary btn-sm">Back</a>
+                <button type="submit" class="btn btn-primary btn-sm">
+                    {% if form.instance.pk %}Update{% else %}Create{% endif %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
