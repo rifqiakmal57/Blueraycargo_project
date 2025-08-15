@@ -6,9 +6,11 @@ Aplikasi ini digunakan untuk menghitung ongkos kirim internasional dan domestik 
 
 ## Fitur
 
-### 1. Login & Autentikasi
+### 1. Login & Registrasi
 - Pengguna harus login untuk mengakses dashboard.
 - Tersedia tombol logout di header.
+- Silahkan Registrasi Jika tidak mempunyai akun
+- Untuk Testing , Username : email@example.com Password : passwrod123
 
 ### 2. Dashboard & CRUD
 - **Countries:** Tambah, edit, hapus data negara asal internasional.
